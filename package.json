@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app/index.js"
+    "dev": "nodemon app/index.js",
+    "start": "node app/index.js",
+    "build": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "cody.hu <codyooo1993@gmail.com> (http://github.com/codyooo)",
   "license": "MIT",
   "dependencies": {
+    "client": "file:client",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.10.0",
@@ -22,6 +25,7 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.1",
     "mongoose": "^5.7.5",
+    "prefix": "^1.0.0",
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {

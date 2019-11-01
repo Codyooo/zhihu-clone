@@ -2,7 +2,7 @@ const Koa = require('koa');
 const koaBody = require('koa-body');
 const koaStatic = require('koa-static');
 const error = require('koa-json-error');
-// const send = require('koa-send');
+const send = require('koa-send');
 const parameter = require('koa-parameter');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -64,17 +64,24 @@ app.use(
 app.use(parameter(app));
 
 // 重定向到index.html
-// app.use(async (ctx, next) => {
-//   // console.log(ctx.url);
-//   // if (['/api/v1/users/login'].includes(ctx.url)) {
-//   //   await next();
-//   // }
-//   await send(ctx, './index.html', {
-//     root: path.join(__dirname, '../client/build')
-//   });
-// });
+app.use(async (ctx, next) => {
+  if (ctx.url === '/signin') {
+    await send(ctx, './index.html', {
+      root: path.join(__dirname, '../client/build')
+    });
+  }
+
+  if (ctx.url !== '/signin') {
+    await send(ctx, './index.html', {
+      root: path.join(__dirname, '../client/build')
+    });
+    await next();
+  }
+});
 
 //注册路由
 registerRoutes(app);
 
-app.listen(3000, () => console.log('server started on port 3000'));
+app.listen(process.env.PORT || 3000, () =>
+  console.log('server started on port 3000')
+);
