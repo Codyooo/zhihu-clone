@@ -16,7 +16,7 @@ interface Props {
 }
 
 const HomePage: React.FC<Props> = ({ question, fetchQuestionsListRequest, userLogout }) => {
-    console.log('question', question);
+    // console.log('question', question);
     const { questions } = question;
     useEffect(() => {
         fetchQuestionsListRequest();

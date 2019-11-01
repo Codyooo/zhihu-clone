@@ -4,7 +4,7 @@ const Topic = require('../models/topic');
 const Question = require('../models/question');
 const Answer = require('../models/answer');
 
-const { secret } = require('../config');
+// const { secret } = require('../config');
 
 class UserCtl {
   async find(ctx) {
@@ -96,18 +96,25 @@ class UserCtl {
     ctx.body = user;
   }
 
-  async login(ctx) {
+  async login(ctx, next) {
     ctx.verifyParams({
       name: { type: 'string', required: true },
       password: { type: 'string', required: true }
     });
     const user = await User.findOne(ctx.request.body);
-    if (!user) ctx.throw(401, '用户名密码不正确');
+    if (!user) {
+      // ctx.status(401);
+      // await next();
+      ctx.throw(401, '用户名密码不正确');
+    }
 
     const { _id, name } = user;
 
     // 生成token
-    const token = jsonwebtoken.sign({ _id, name }, secret, { expiresIn: '1d' });
+    const token = jsonwebtoken.sign({ _id, name }, process.env.JWT_SECRET, {
+      expiresIn: '1d'
+    });
+    // console.log('token', token);
     ctx.body = { token };
   }
 

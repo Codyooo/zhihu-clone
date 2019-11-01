@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MouseEvent } from 'react';
 import { TabGroupWrapper } from './style';
+import { NavLink } from 'react-router-dom';
 import history from '../../../utils/history';
-import { switchCase } from '@babel/types';
 
 
 interface Props {
@@ -10,40 +10,35 @@ interface Props {
 }
 
 const TabGroup: React.FC<Props> = () => {
+    const tabRef = useRef<any>(null);
 
-    const handleActiveLink = (event: MouseEvent<HTMLDivElement>): void => {
-        const parent = event.currentTarget;
-        const child = event.target as HTMLDivElement;
-        const target = child.parentElement;
-        if (child.className.includes('link') && target) {
-            Array.from(parent.children).forEach(tab => tab.classList.remove('active'));
-            target.classList.add('active');
+    // 解决refresh highight失效问题
+    useEffect(() => {
+        if (['/follow', '/hot', '/'].includes(history.location.pathname)) return;
+        removeHighlight();
+    }, [])
 
-            if (target.classList.contains('home')) {
-                history.push('/');
-                return;
-            }
-            if (target.classList.contains('explore')) {
-                history.push('/explore');
-                return;
-            }
-            if (target.classList.contains('answer')) {
-                history.push('/question/waiting');
-                return;
-            }
-        }
+    const removeHighlight = () => {
+        const tab = (tabRef.current) as HTMLInputElement;
+        if (!tab) return;
+        tab.classList.remove('active');
+    }
+    const addHighlight = (event: MouseEvent<HTMLElement>) => {
+        const tab = (tabRef.current) as HTMLInputElement;
+        if (!tab) return;
+        tab.classList.add('active');
     }
 
     return (
-        <TabGroupWrapper onClick={handleActiveLink}>
-            <div className='tab-item active home'>
-                <div className='tab-item__link '>首页</div>
+        <TabGroupWrapper>
+            <div className='tab-item'>
+                <NavLink onClick={addHighlight} ref={tabRef} to='/' >首页</NavLink>
             </div>
-            <div className='tab-item explore'>
-                <div className='tab-item__link '>发现</div>
+            <div className='tab-item'>
+                <NavLink onClick={removeHighlight} to='/explore' exact activeClassName="active">发现</NavLink>
             </div>
             <div className='tab-item answer'>
-                <div className='tab-item__link'>等你来答</div>
+                <NavLink onClick={removeHighlight} to='/question/waiting' exact activeClassName="active">等你来答</NavLink>
             </div>
         </TabGroupWrapper>
     )

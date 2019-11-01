@@ -10,6 +10,7 @@
   "author": "cody.hu <codyooo1993@gmail.com> (http://github.com/codyooo)",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.10.0",
     "koa-body": "^4.1.1",
@@ -17,7 +18,9 @@
     "koa-jwt": "^3.6.0",
     "koa-parameter": "^3.0.1",
     "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
     "koa-static": "^5.0.0",
+    "koa-views": "^6.2.1",
     "mongoose": "^5.7.5",
     "react-router-dom": "^5.1.2"
   },
