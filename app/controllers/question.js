@@ -11,6 +11,22 @@ class QuestionCtl {
     const questions = await Question.find({
       $or: [{ name: q }, { description: q }]
     })
+      .populate('questioner')
+      .limit($limit)
+      .skip($page);
+
+    ctx.body = questions;
+  }
+
+  async findWithSuggestAnswer(ctx) {
+    const { limit = 10, page = 1 } = ctx.query;
+    const $limit = Math.max(limit, 1);
+    const $page = Math.max(page, 1) - 1;
+    const q = new RegExp(ctx.query.q);
+    const questions = await Question.find({
+      $or: [{ name: q }, { description: q }]
+    })
+      .populate('questioner')
       .limit($limit)
       .skip($page);
 

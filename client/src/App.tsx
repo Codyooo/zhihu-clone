@@ -12,8 +12,6 @@ const App: React.FC = () => {
       <Route exact path='/signin' component={SignInPage} />
       <AuthRoute path='/' component={HomePage} />
     </Switch>
-    {/* <Route />
-      <Route /> */}
   </div>
 }
 

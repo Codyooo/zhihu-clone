@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { fetchQuestionsListRequest } from '../../redux/actions/question';
 import { userLogout } from '../../redux/actions/account';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../../components/Header';
@@ -10,17 +8,10 @@ import TopStoryPage from '../TopStory';
 
 
 interface Props {
-    question: any;
-    fetchQuestionsListRequest: () => {};
-    userLogout: () => {}
+
 }
 
-const HomePage: React.FC<Props> = ({ question, fetchQuestionsListRequest, userLogout }) => {
-    // console.log('question', question);
-    const { questions } = question;
-    useEffect(() => {
-        fetchQuestionsListRequest();
-    }, []);
+const HomePage: React.FC<Props> = () => {
 
     return (
         <div>
@@ -47,10 +38,6 @@ const HomePage: React.FC<Props> = ({ question, fetchQuestionsListRequest, userLo
     )
 }
 
-const mapStateToProps = ({ question }: any) => {
-    return {
-        question
-    }
-}
 
-export default connect(mapStateToProps, { fetchQuestionsListRequest, userLogout })(HomePage);
+
+export default HomePage;

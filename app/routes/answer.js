@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 
-const router = new Router({ prefix: '/questions/:questionId/answers' });
+const router = new Router({ prefix: '/api/v1/questions/:questionId/answers' });
 const auth = require('../middlewares/auth');
 
 const {
@@ -10,11 +10,13 @@ const {
   update,
   delete: del,
   checkAnswerer,
-  checkAnswerExsit
+  checkAnswerExsit,
+  findHighestVoteAnswer
 } = require('../controllers/answer');
 
 router
   .get('/', find)
+  .get('/highvote', findHighestVoteAnswer)
   .post('/', auth, create)
   .get('/:id', findById)
   .patch('/:id', auth, checkAnswerExsit, checkAnswerer, update)

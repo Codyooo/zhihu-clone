@@ -8,6 +8,8 @@ export const ColumnWrapper = styled.div`
   .col-left {
     box-shadow: 0px 1px 3px rgba(26, 26, 26, 0.1);
     background: #fff;
+    height:100%;
+    width:auto;
   }
   .col-right {
     background: #f6f6f6;

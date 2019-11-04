@@ -5,10 +5,12 @@ import { ReactComponent as LogoDown } from '../../../../assets/oppose.svg';
 
 interface Props {
     questionId?: string;
+    voteCount?: number;
 }
 
-const AgreeCounter: React.FC<Props> = () => {
-    const [count, setCount] = useState<number>(() => 333);
+const AgreeCounter: React.FC<Props> = ({ voteCount }) => {
+    console.log('voteCount',voteCount)
+    const [count, setCount] = useState<number>(() => voteCount || 0);
     const [activeAgree, setActiveAgree] = useState(false);
     const [activeOppose, setActiveOppose] = useState(false);
 

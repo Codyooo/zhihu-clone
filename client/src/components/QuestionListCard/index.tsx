@@ -1,23 +1,59 @@
-import React from 'react'
-import { QuestionListCardWrapper } from './style'
-import MainLayout from '../../layout/MainLayout';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { QuestionListCardWrapper } from './style';
+import { fetchQAListRequest, fetchQuestionsListRequest } from '../../redux/actions/question';
 import QuestionListItem from './QuestionListItem';
-interface Props {
+import { get } from 'lodash';
+import { AppState } from '../../redux/store';
+import { QA } from '../../redux/actions/types/question';
+import LoadingBar from '../Common/LoaddingBar'
+
+interface StateProps {
+    questions: QA[];
+    loading: boolean;
+}
+
+interface DispatchProps {
+    fetchQAListRequest(): void;
+}
+
+interface OwnProps {
 
 }
 
-const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, , 10, 11, 12];
-const QuestionListCard: React.FC<Props> = () => {
+type Props = StateProps & DispatchProps & OwnProps;
+
+const QuestionListCard: React.FC<Props> = ({ questions, fetchQAListRequest, loading }) => {
+
+    useEffect(() => {
+        fetchQAListRequest();
+    }, []);
+
+    const renderList = () =>
+        questions.map(question => {
+            const { _id, title, description, answer, comments } = question;
+            const answerPreview = get(answer, ['content'], '');
+            const answererName = get(answer, ['answerer', 'name'], '');
+            const voteCount = get(answer, ['voteCount'], 0);
+            return <QuestionListItem key={_id} answerPreview={answerPreview} answererName={answererName} title={title} comments={comments} voteCount={voteCount} />
+        })
 
 
     return (
         <QuestionListCardWrapper>
-            {data.map(item => {
-                return <QuestionListItem key={item} />
-            })}
+            {loading ? <LoadingBar /> : renderList()}
+
 
         </QuestionListCardWrapper>
     )
 }
 
-export default QuestionListCard;
+const mapStateToProps = (state: AppState) => {
+    return {
+        questions: state.question.data,
+        loading: state.question.loadding
+    }
+}
+
+
+export default connect(mapStateToProps, { fetchQAListRequest })(QuestionListCard);

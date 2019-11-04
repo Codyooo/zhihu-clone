@@ -15,9 +15,25 @@ export const QuestionListItemWrapper = styled.div`
   .content {
     display: flex;
     align-items: center;
-    margin-top:10px;
+    margin-top: 10px;
 
-    img {
+    &.content-full {
+      animation: mergeIn linear 0.4s;
+      flex-direction: column;
+      align-items: flex-start;
+      .comment-count {
+        font-size: 14px;
+        color: #8590a6;
+
+
+        :hover {
+          cursor: pointer;
+          color: #76839b;
+        }
+      }
+    }
+
+    .img-preview {
       min-width: 190px;
       width: 190px;
       height: 105px;
@@ -28,12 +44,27 @@ export const QuestionListItemWrapper = styled.div`
       cursor: pointer;
       max-height: 100px;
       max-width: 446px;
-      line-height:1.67;
-      margin-left:18px;
-      
-
+      line-height: 1.67;
+      margin-left: 18px;
       color: #1a1a1a;
       font-size: 15px;
+
+      //多行折叠
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      /* ::after{
+        content:'';
+        position:absolute;
+        width:200px;
+        display:block;
+        background:red;
+        height:10px;
+        right:0;
+      } */
+
       :hover {
         color: #646464;
       }
@@ -45,6 +76,18 @@ export const QuestionListItemWrapper = styled.div`
           color: grey;
         }
       }
+    }
+  }
+
+  @keyframes mergeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-5%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 `;

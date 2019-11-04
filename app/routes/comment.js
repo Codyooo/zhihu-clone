@@ -1,12 +1,13 @@
 const Router = require('koa-router');
 
 const router = new Router({
-  prefix: '/question/:questionId/answer/:answerId/comment'
+  prefix: '/api/v1/question/:questionId/answer/:answerId/comment'
 });
 const auth = require('../middlewares/auth');
 
 const {
   find,
+  count,
   findById,
   create,
   delete: del,
@@ -16,6 +17,7 @@ const {
 
 // 评论
 router.get('/', find);
+router.get('/count', count);
 router.post('/', auth, create);
 router.get('/:id', findById);
 router.delete('/:id', auth, checkCommentExsit, checkCommenter, del);

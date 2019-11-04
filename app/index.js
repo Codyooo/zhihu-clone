@@ -64,20 +64,20 @@ app.use(
 app.use(parameter(app));
 
 // 重定向到index.html
-app.use(async (ctx, next) => {
-  if (ctx.url === '/signin') {
-    await send(ctx, './index.html', {
-      root: path.join(__dirname, '../client/build')
-    });
-  }
+// app.use(async (ctx, next) => {
+//   if (ctx.url === '/signin') {
+//     await send(ctx, './index.html', {
+//       root: path.join(__dirname, '../client/build')
+//     });
+//   }
 
-  if (ctx.url !== '/signin') {
-    await send(ctx, './index.html', {
-      root: path.join(__dirname, '../client/build')
-    });
-    await next();
-  }
-});
+//   if (ctx.url !== '/signin') {
+//     await send(ctx, './index.html', {
+//       root: path.join(__dirname, '../client/build')
+//     });
+//     await next();
+//   }
+// });
 
 //注册路由
 registerRoutes(app);

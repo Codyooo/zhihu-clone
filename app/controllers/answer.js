@@ -16,6 +16,16 @@ class AnswerCtl {
     ctx.body = answers;
   }
 
+  async findHighestVoteAnswer(ctx) {
+    const answer = await Answer.find({
+      questionId: ctx.params.questionId
+    })
+      .sort('-voteCount')
+      .limit(1)
+      .populate('answerer');
+    ctx.body = answer;
+  }
+
   async findById(ctx) {
     const answer = await Answer.findById(
       ctx.params.id,

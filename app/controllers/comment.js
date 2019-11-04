@@ -23,6 +23,20 @@ class CommentCtl {
     ctx.body = comment;
   }
 
+  async count(ctx) {
+    const { questionId, answerId } = ctx.params;
+
+    const totalComments = await Comment.find({
+      questionId,
+      answerId,
+      rootCommentId: { $exists: false }
+    });
+
+    ctx.body = {
+      totalComments: totalComments.length
+    };
+  }
+
   async findById(ctx) {
     const comment = await Comment.findById(
       ctx.params.id,
