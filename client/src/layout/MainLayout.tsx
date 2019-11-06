@@ -5,13 +5,13 @@ import styled from 'styled-components';
 const Container = styled.div`
     background:#F6F6F6;
     margin:0 auto;
-    margin-top:10px;
+    margin-top:62px;
     width:1000px;
    
 `
 
 interface Props {
-    children: ReactElement
+    children?: any;
 }
 
 const MainLayout: React.FC<Props> = ({ children }) => {

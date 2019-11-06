@@ -2,16 +2,18 @@ import styled from 'styled-components';
 
 export const TopStoryTabWrapper = styled.div`
   width: 694px;
-  height: 59px;
-  background: #fff;
+  height: 52px;
+
   display: flex;
   align-items: center;
   border-bottom: 1px solid #eee;
+  padding: 3px 0;
 
   .tab-item {
     color: rgb(26, 26, 26);
     font-size: 16px;
     margin: 0 22px;
+
 
     :hover {
       color: #175199;

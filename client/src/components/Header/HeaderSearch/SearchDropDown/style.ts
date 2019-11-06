@@ -16,6 +16,7 @@ export const SearchDropDownWrapper = styled.div`
   border-radius: 3px;
   padding: 12px 0;
 
+  z-index:8;
   position: absolute;
   top: 125%;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);

@@ -4,10 +4,10 @@ import SearchInput from './SearchInput'
 import Button from '../../Common/Button'
 
 interface Props {
-
+    animated?: boolean
 }
 
-const HeaderSearch: React.FC<Props> = () => {
+const HeaderSearch: React.FC<Props> = ({ animated = true }) => {
     const [visible, setVisible] = useState(true);
 
     return (

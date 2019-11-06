@@ -11,13 +11,14 @@ export const TabGroupWrapper = styled.div`
   .tab-item {
     transition: all.2s;
     padding: 0 17px;
-    color: #8590a6;
     height: 48px;
+
     a {
       display: flex;
       align-items: center;
       font-size: 15px;
       height: 100%;
+      color: #8590a6;
       cursor: pointer;
       &.active {
         box-shadow: 0 3px 0px 0px #0084ff;

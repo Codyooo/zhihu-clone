@@ -14,9 +14,9 @@ export const UserCardWrapper = styled.div`
   height: 200px;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.2);
-  cursor: unset !important;
+  cursor: auto;
   background: #fff;
-  position: ${(props: Props) => (props.float ? 'absolute' : 'relative')}
+  position: ${(props: Props) => (props.float ? 'absolute' : 'relative')};
   top: ${(props: Props) => props.y || 0}px;
   left: ${(props: Props) => props.x || 0}px;
 

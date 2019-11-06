@@ -13,10 +13,19 @@ export const MenuGroupWrapper = styled.div`
         cursor: pointer;
     }
     .menu-item{
+        position: relative;
         margin-right:40px;
         cursor: pointer;
+        .notification-card{
+            top:41px;
+            left:-170px;
+            z-index:88;
+        }
         :hover{
-            fill:#76839b;
+            >svg{
+                fill:#76839b;
+            }
+     
         }
     }
 

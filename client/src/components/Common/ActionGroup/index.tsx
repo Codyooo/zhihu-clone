@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useRef, useEffect } from 'react';
 import { ActionGroupWrapper } from './style';
 import AgreeCounter from './AgreeCounter';
 import CommentsCount from './CommentsCount';
@@ -14,10 +14,38 @@ interface Props {
     collapse: boolean;
 }
 
+// TODO
 const ActionGroup: React.FC<Props> = ({ comments, voteCount, toggle, collapse }) => {
+    const actionRef = useRef<HTMLDivElement>(null);
+    const isBottom = () => {
+    
+        // const bottom = positionY + node.clientHeight === window.innerHeight;
+        // console.log(positionY,)
+        // if (bottom) {
+        //     console.log('yeah')
+        // }
+
+
+        // const bottom = node.scrollHeight - node.scrollTop === node.clientHeight;
+        // // if (bottom) {
+        //     console.log('bottom');
+        //     console.log('scrollHeight',node.scrollHeight)
+        //     console.log('scrollTop',node.scrollTop)
+        //     console.log('clientHeight',node.clientHeight)
+        // // }
+
+
+
+    }
+    // useEffect(() => {
+    //     window.addEventListener('scroll', () => {
+    //         isBottom();
+    //     })
+    // })
+
 
     return (
-        <ActionGroupWrapper>
+        <ActionGroupWrapper ref={actionRef}>
             <AgreeCounter voteCount={voteCount} />
             <div className='icon-wrapper' >
                 <CommentsCount countNumber={12} handleToggleComments={() => { }} />
