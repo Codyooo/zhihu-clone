@@ -38,7 +38,7 @@ const TabGroup: React.FC<Props> = () => {
                 <NavLink onClick={removeHighlight} to='/explore' exact activeClassName="active">发现</NavLink>
             </div>
             <div className='tab-item answer'>
-                <NavLink onClick={removeHighlight} to='/question/waiting' exact activeClassName="active">等你来答</NavLink>
+                <NavLink onClick={removeHighlight} to='/question/waiting' exact activeClassName="active"> 等你来答</NavLink>
             </div>
         </TabGroupWrapper>
     )

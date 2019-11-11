@@ -3,6 +3,7 @@ import { QuestionListItemWrapper } from './style';
 import ActionGroup from '../../Common/ActionGroup';
 import useToggle from '../../../hooks/useToggle';
 import Avatar from '../../Common/Avatar';
+import history from '../../../utils/history'
 
 
 interface Props {
@@ -11,12 +12,13 @@ interface Props {
     answererName: string;
     comments?: number;
     voteCount?: number;
+    id: string;
 }
 interface State {
 
 }
 
-const QuestionListItem: React.FC<Props> = ({ title, answerPreview, answererName, comments, voteCount }) => {
+const QuestionListItem: React.FC<Props> = ({ title, answerPreview, answererName, comments, voteCount, id }) => {
     const [fullDoc, setFullDoc] = useState<any>(null);
     const [open, toggleOpen] = useToggle(false);
 
@@ -25,9 +27,20 @@ const QuestionListItem: React.FC<Props> = ({ title, answerPreview, answererName,
         toggleOpen()
     }
 
+    const hanldeGoToQustionPage = () => {
+        // window.open(`/question/${id}`, '__blank');
+        history.push({
+            pathname: `/question/${id}`,
+            state: {
+                title,
+                id
+            }
+        })
+    }
+
     return (
         <QuestionListItemWrapper>
-            <div className='title'>{title}</div>
+            <div className='title' onClick={hanldeGoToQustionPage}>{title}</div>
             {open ? <div className='content content-full'>
                 <Avatar />
                 <p className="comment-count">{`2,103 人赞同了该回答`}</p>

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const AgreeCounter: React.FC<Props> = ({ voteCount }) => {
-    console.log('voteCount',voteCount)
+ 
     const [count, setCount] = useState<number>(() => voteCount || 0);
     const [activeAgree, setActiveAgree] = useState(false);
     const [activeOppose, setActiveOppose] = useState(false);

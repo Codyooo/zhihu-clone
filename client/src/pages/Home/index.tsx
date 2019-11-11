@@ -5,6 +5,9 @@ import Header from '../../components/Header';
 import ExplorePage from '../Explore';
 import WaitingPage from '../Waiting';
 import TopStoryPage from '../TopStory';
+import DetailPage from '../Detail'
+import QuestionPage from '../Question'
+import ScrollToTop from '../../components/Common/ScrollToTop/ScrollToTop';
 
 
 interface Props {
@@ -19,6 +22,8 @@ const HomePage: React.FC<Props> = () => {
             <Switch>
                 <Route path='/explore' component={ExplorePage} />
                 <Route path='/question/waiting' component={WaitingPage} />
+                <Route path='/p/:number' component={DetailPage} />
+                <Route path='/question/:number' component={QuestionPage} />
                 <Route path='/' component={TopStoryPage} />
             </Switch>
 

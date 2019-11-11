@@ -11,6 +11,7 @@ export const MenuGroupWrapper = styled.div`
         height:30px;
         width:30px;
         cursor: pointer;
+        border-radius:2px;
     }
     .menu-item{
         position: relative;

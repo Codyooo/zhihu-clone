@@ -81,3 +81,30 @@ export const columnCardData = [
     ]
   }
 ];
+
+export const exploreCardData = [
+  {
+    title: '网剧创业',
+    count: '4,238关注 486 文章',
+    imgUrl: 'https://pic4.zhimg.com/v2-6e4bb72194ef260bfaf040019e2e6d7b_xl.jpg',
+    intro: '互联网科技创业资讯，分享不同的观点！'
+  },
+  {
+    title: '摇摆电影',
+    count: '574 关注183 文章',
+    imgUrl: 'https://pic2.zhimg.com/v2-3d2f81ed0dc844085d7cbf7fd44261b6_xl.jpg',
+    intro: '公众号:牙白白白，有关电影的有趣的无趣的及其他'
+  },
+  {
+    title: 'Travel星辰大海---旅游行业进阶之路',
+    count: '4,238关注 486 文章',
+    imgUrl: 'https://pic2.zhimg.com/v2-1b1f8dae73cb74412c380befc6609621_xl.jpg',
+    intro: '只放干货，内容原创，关注旅游创业/旅游互联网'
+  },
+  {
+    title: '抽屉电影',
+    count: '1,293 关注1,168 文章',
+    imgUrl: 'https://pic2.zhimg.com/v2-3d2f81ed0dc844085d7cbf7fd44261b6_xl.jpg',
+    intro: '互联网科技创业资讯，分享不同的观点！'
+  }
+];

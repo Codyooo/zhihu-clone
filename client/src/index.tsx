@@ -7,6 +7,8 @@ import store from './redux/store';
 import history from './utils/history';
 
 
+
+
 ReactDOM.render(
     <Provider store={store} >
         <Router history={history}>
@@ -14,4 +16,3 @@ ReactDOM.render(
         </Router>
     </Provider>,
     document.getElementById('root') as HTMLElement);
-     

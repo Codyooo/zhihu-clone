@@ -3,6 +3,7 @@ const koaBody = require('koa-body');
 const koaStatic = require('koa-static');
 const error = require('koa-json-error');
 const send = require('koa-send');
+const compress = require('koa-compress');
 const parameter = require('koa-parameter');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -36,6 +37,8 @@ mongoose.connect(
 mongoose.connection.on('error', console.error);
 
 const registerRoutes = require('./routes');
+
+app.use(compress({ threshold: 2048 }));
 
 // server静态文件目录
 app.use(koaStatic(path.join(__dirname, '../client/build')));

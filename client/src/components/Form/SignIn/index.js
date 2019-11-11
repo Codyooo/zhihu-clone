@@ -68,7 +68,7 @@ const SignIn = (props) => {
 const formikConfig = {
     mapPropsToValues: ({ name, password }) => ({
         name: name || "doubleq",
-        password: password || "123456"
+        password: password || "doubleq"
     }),
 
     handleSubmit: (values, { props: { userSignInRequest } }) => {
@@ -76,7 +76,7 @@ const formikConfig = {
     },
     validationSchema: Yup.object().shape({
         name: Yup.string().required('请输入手机号或邮箱').typeError(''),
-        password: Yup.string().min(6, '密码不能小于6位').required('请输入密码')
+        password: Yup.string().min(2, '密码不能小于2位').required('请输入密码')
     }
     )
 }

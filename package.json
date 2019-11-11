@@ -13,10 +13,12 @@
   "license": "MIT",
   "dependencies": {
     "client": "file:client",
+    "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.10.0",
     "koa-body": "^4.1.1",
+    "koa-compress": "^3.0.0",
     "koa-json-error": "^3.1.2",
     "koa-jwt": "^3.6.0",
     "koa-parameter": "^3.0.1",
@@ -26,7 +28,8 @@
     "koa-views": "^6.2.1",
     "mongoose": "^5.7.5",
     "prefix": "^1.0.0",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "remove": "^0.1.5"
   },
   "devDependencies": {
     "eslint": "^6.5.1",

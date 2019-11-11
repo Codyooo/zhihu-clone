@@ -10,15 +10,15 @@ import { ReactComponent as LogoArrow } from '../../../assets/arrow-up.svg'
 interface Props {
     comments?: number;
     voteCount?: number;
-    toggle: () => void;
-    collapse: boolean;
+    toggle?: () => void;
+    collapse?: boolean;
 }
 
 // TODO
 const ActionGroup: React.FC<Props> = ({ comments, voteCount, toggle, collapse }) => {
     const actionRef = useRef<HTMLDivElement>(null);
     const isBottom = () => {
-    
+
         // const bottom = positionY + node.clientHeight === window.innerHeight;
         // console.log(positionY,)
         // if (bottom) {
@@ -52,7 +52,7 @@ const ActionGroup: React.FC<Props> = ({ comments, voteCount, toggle, collapse })
                 <div className='action action-share'><LogoShare />分享</div>
                 <div className='action action-favor'><LogoStar />收藏</div>
                 <div className='action action-appreciate'><LogoHeart />感谢</div>
-                {collapse && <div className='action action-collapse' onClick={() => toggle()}>收起<LogoArrow /></div>}
+                {collapse && <div className='action action-collapse' onClick={() => toggle && toggle()}>收起<LogoArrow /></div>}
             </div>
 
         </ActionGroupWrapper>

@@ -35,7 +35,7 @@ const QuestionListCard: React.FC<Props> = ({ questions, fetchQAListRequest, load
             const answerPreview = get(answer, ['content'], '');
             const answererName = get(answer, ['answerer', 'name'], '');
             const voteCount = get(answer, ['voteCount'], 0);
-            return <QuestionListItem key={_id} answerPreview={answerPreview} answererName={answererName} title={title} comments={comments} voteCount={voteCount} />
+            return <QuestionListItem key={_id} id={_id} answerPreview={answerPreview} answererName={answererName} title={title} comments={comments} voteCount={voteCount} />
         })
 
 

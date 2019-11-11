@@ -5,9 +5,11 @@ import UserCard from '../../components/Common/UserCard'
 import Notification from '../../components/Notification'
 import MainLayout from '../../layout/MainLayout'
 import ColumnCard from '../../components/Card/ColumnCard'
-import { columnCardData } from '../../mock'
+import { columnCardData, exploreCardData } from '../../mock'
 import { ExplorePageWrapper } from './style'
 import { ReactComponent as LogoColumn } from '../../assets/column-card.svg'
+import { ReactComponent as LogoPen } from '../../assets/pen.svg'
+import ExploreColumnCard from '../../components/Card/ExploreColumnCard'
 
 
 const CardData = {
@@ -39,19 +41,34 @@ const ExplorePage: React.FC = () => {
                         <LogoColumn />
                         最新专题
                 </div>
-
                     <div className="content">
                         {columnCardData.map(({ title, imgUrl, items, count }) => {
                             return <ColumnCard key={title} title={title} imgUrl={imgUrl} count={count} items={items} />
                         })}
                     </div>
+                    <div className="btn-more">
+                        查看更多专题 >
+                    </div>
 
                 </section>
+
+
+                <section>
+                    <div className="title">
+                        <LogoPen />
+                        专栏
+                </div>
+                    <div className="content-column">
+                        {exploreCardData.map(({ title, imgUrl, intro, count }) => {
+                            return <ExploreColumnCard key={title} title={title} imgUrl={imgUrl} count={count} intro={intro} />
+                        })}
+                    </div>
+                    <div className="btn-more">
+                        查看更多专栏 >
+                    </div>
+                </section>
             </ExplorePageWrapper>
-
-
         </MainLayout>
-
     )
 }
 
