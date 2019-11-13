@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CommentBoxWrapper = styled.div`
   width: 100%;
   /* box-shadow: 0 1px 3px rgba(26, 26, 26, 0.2); */
+  
 
   .comment-header {
     display: flex;
@@ -35,7 +36,14 @@ export const CommentBoxWrapper = styled.div`
   }
 
   .comment-list {
-    height: 600px;
+    height: ${(props: { isModal: boolean }) =>
+      props.isModal ? '600px' : '100%'};
+    .loading-dot{
+      box-shadow:unset;
+      margin:0 auto;
+      margin-top:20px;
+    }
+
   }
 
 

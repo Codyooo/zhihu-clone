@@ -7,6 +7,7 @@ interface Props {
 }
 
 export const UserCardWrapper = styled.div`
+z-index:3;
   display: flex;
   padding: 4px 10px 10px;
   flex-direction: column;

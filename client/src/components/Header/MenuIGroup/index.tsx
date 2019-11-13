@@ -3,7 +3,7 @@ import { ReactComponent as AlarmLogo } from '../../../assets/alarm.svg';
 import { ReactComponent as MessageLogo } from '../../../assets/sixin.svg';
 import { MenuGroupWrapper } from './style';
 import Notification from '../../Notification';
-import { useOutsideClick } from '../../../hooks/useOutsideClick'
+import useOutsideClick from '../../../hooks/useOutsideClick'
 
 interface Props {
 

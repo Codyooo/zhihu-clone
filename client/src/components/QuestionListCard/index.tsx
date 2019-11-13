@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, MouseEvent } from 'react';
 import { connect } from 'react-redux';
 import { QuestionListCardWrapper } from './style';
 import { fetchQAListRequest, fetchQuestionsListRequest } from '../../redux/actions/question';
@@ -28,6 +28,17 @@ const QuestionListCard: React.FC<Props> = ({ questions, fetchQAListRequest, load
     useEffect(() => {
         fetchQAListRequest();
     }, []);
+
+    useEffect(() => {
+        const fetchMore = () => {
+            console.log('scrollHeight', document.documentElement.scrollHeight)
+            console.log('scrollTop', document.documentElement.scrollTop)
+            console.log('innerHeight', window.innerHeight)
+        }
+        console.log('haha')
+        window.addEventListener('scroll', fetchMore);
+        return () => window.removeEventListener('scroll', fetchMore)
+    })
 
     const renderList = () =>
         questions.map(question => {

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const QuestionListItemWrapper = styled.div`
-  padding: 20px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #eee;
   .title {
     cursor: pointer;
     font-size: 18px;
@@ -18,13 +19,12 @@ export const QuestionListItemWrapper = styled.div`
     margin-top: 10px;
 
     &.content-full {
-      animation: mergeIn linear 0.4s;
+      animation: mergeIn linear 0.3s;
       flex-direction: column;
       align-items: flex-start;
       .comment-count {
         font-size: 14px;
         color: #8590a6;
-
 
         :hover {
           cursor: pointer;
@@ -82,7 +82,7 @@ export const QuestionListItemWrapper = styled.div`
   @keyframes mergeIn {
     0% {
       opacity: 0;
-      transform: translateY(-5%);
+      transform: translateY(-2%);
     }
 
     100% {

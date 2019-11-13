@@ -32,7 +32,7 @@ const Header: React.FC<Props> = () => {
                     <HeaderSearch />
                     <MenuGroup />
                 </div>
-                <StickerHeader visible={fixedHeader} />
+                {/* <StickerHeader visible={fixedHeader} /> */}
             </div>
         )
 

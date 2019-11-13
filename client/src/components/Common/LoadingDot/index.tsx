@@ -11,7 +11,7 @@ interface Props {
 const LoadingDot: React.FC<Props> = ({ x, y, float = false }) => {
 
     return (
-        <LoadingWrapper x={x} y={y} float={float}>
+        <LoadingWrapper className='loading-dot' x={x} y={y} float={float}>
             <div className="dot"></div>
             <div className="dot"></div>
             <div className="dot"></div>

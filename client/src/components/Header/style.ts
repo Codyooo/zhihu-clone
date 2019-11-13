@@ -30,13 +30,13 @@ export const HeaderWrapper = styled.header`
   }
 
   .inner-wrapper {
-    &.hidden {
+    /* &.hidden {
       transform: translateY(-102%);
     }
 
     &.active {
       transform: translateY(0);
-    }
+    } */
     transition: transform 0.3s linear;
     display: flex;
     align-items: center;

@@ -46,7 +46,7 @@ const Question: React.FC<Props> = () => {
 
                 <AnswerList />
                 <Modal onCancel={() => setModalVisible(false)} visible={modalVisible}>
-                    <CommentBox />
+                    <CommentBox isModal={true} />
                 </Modal>
             </QuestionPageWrapper>
         </MainLayout>

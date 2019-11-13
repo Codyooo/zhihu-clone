@@ -8,9 +8,11 @@ interface Props {
     onOk?: () => void;
     onCancel: () => void;
     children: any;
+    width?: string;
+    height?: string
 }
 
-const Modal: React.FC<Props> = ({ children, visible = false, onCancel }) => {
+const Modal: React.FC<Props> = ({ children, visible = false, onCancel, width = '650px', height = 'calc(100vh - 48px)' }) => {
     const root = useRef(document.createElement('div'));
 
     const cancelModal = () => {
@@ -32,11 +34,12 @@ const Modal: React.FC<Props> = ({ children, visible = false, onCancel }) => {
         }
     }, [])
 
-    return (ReactDOM.createPortal(<ModalWrapper visible={visible}>
+    return (ReactDOM.createPortal(<ModalWrapper visible={visible} width={width} height={height}>
         <section className="container">
             {children}
+            <div className='btn-close' onClick={cancelModal}><LogoClose /></div>
         </section>
-        <div className='btn-close' onClick={cancelModal}><LogoClose /></div>
+
 
     </ModalWrapper>, root.current)
     )
