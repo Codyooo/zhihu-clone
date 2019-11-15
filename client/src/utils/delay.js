@@ -1,4 +1,4 @@
-function debounce(callback, wait) {
+export function debounce(callback, wait) {
     let timeout;
     return (...args) => {
         const context = this;
@@ -8,7 +8,7 @@ function debounce(callback, wait) {
 }
 
 
-function throttle(callback, wait) {
+export function throttle(callback, wait) {
     let timeout;
     return (...args) => {
         if (timeout) return;
@@ -17,4 +17,10 @@ function throttle(callback, wait) {
             timeout = null;
         }, wait);
     }
+}
+
+export function sleep(wait) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, wait);
+    })
 }

@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components';
+import ScrollTopButton from '../components/ScrollToTopButton';
 
 
 const Container = styled.div`
@@ -19,6 +20,7 @@ const MainLayout: React.FC<Props> = ({ children }) => {
     return (
         <Container>
             {children}
+
         </Container>
     )
 }

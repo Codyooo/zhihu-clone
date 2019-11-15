@@ -8,6 +8,7 @@ import TopStoryPage from '../TopStory';
 import DetailPage from '../Detail'
 import QuestionPage from '../Question'
 import ScrollToTop from '../../components/Common/ScrollToTop/ScrollToTop';
+import ScrollTopButton from '../../components/ScrollToTopButton';
 
 
 interface Props {
@@ -26,6 +27,7 @@ const HomePage: React.FC<Props> = () => {
                 <Route path='/question/:number' component={QuestionPage} />
                 <Route path='/' component={TopStoryPage} />
             </Switch>
+            <ScrollTopButton />
 
             {/* <button onClick={userLogout}>log out</button> */}
             {/* <ul>

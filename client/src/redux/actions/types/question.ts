@@ -5,8 +5,8 @@ export enum QuestionType {
   FETCH_QA_LIST_REQUEST = '@QAList/LOAD_REQUEST',
   FETCH_QA_LIST_SUCCESS = '@QAList/LOAD_SUCCESS',
   FETCH_QA_LIST_FAILURE = '@QAList/LOAD_FAILURE',
-  FETCH_QA_LIST_MORE_REQUEST = '@QAList/LOAD_REQUEST',
-  FETCH_QA_LIST_MORE_SUCCESS = '@QAList/LOAD_SUCCESS'
+  FETCH_QA_LIST_MORE_REQUEST = '@QAList/LOAD_MORE_REQUEST',
+  FETCH_QA_LIST_MORE_SUCCESS = '@QAList/LOAD__MORE_SUCCESS'
 }
 
 /**
@@ -41,6 +41,7 @@ export interface User {
  */
 export interface QuestionState {
   readonly data: QA[];
-  readonly loadding: boolean;
+  readonly loading: boolean;
+  readonly moreLoading: boolean;
   readonly error: any;
 }

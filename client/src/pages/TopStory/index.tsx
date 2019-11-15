@@ -8,6 +8,7 @@ import { ColumnWrapper } from './style';
 import { Route, Switch } from 'react-router-dom';
 import CategoryCard from '../../components/Card/CategoryCard/';
 import NavListCard from '../../components/Card/NavListCard';
+import ScrollTopButton from '../../components/ScrollToTopButton';
 
 interface Props {
 
@@ -26,6 +27,7 @@ const TopStoryPage: React.FC<Props> = () => {
                         <Route exact path="/hot" render={() => <div>热榜</div>} />
                         <Route path="/" component={QuestionListCard} />
                     </Switch>
+
                 </div>
 
                 <div className='col-right'>
@@ -35,7 +37,6 @@ const TopStoryPage: React.FC<Props> = () => {
                     <NavListCard />
                 </div>
             </ColumnWrapper>
-
         </MainLayout>
     )
 }

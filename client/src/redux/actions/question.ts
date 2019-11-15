@@ -21,8 +21,8 @@ export const fetchQuestionsListSuccess = (payload: any) =>
 export const fetchQuestionsListFailure = (payload: any) =>
   action(ActionsTypes.FETCH_QUESTIONS_LIST_FAILURE, payload);
 
-export const fetchQuestionsListMoreRequest = (payload: any) =>
-  action(ActionsTypes.FETCH_QUESTIONS_LIST_REQUEST, payload);
+export const fetchQAListMoreRequest = () =>
+  action(ActionsTypes.FETCH_QA_LIST_MORE_REQUEST);
 
-export const fetchQuestionsListMoreSuccess = (payload: any) =>
-  action(ActionsTypes.FETCH_QUESTIONS_LIST_SUCCESS, payload);
+export const fetchQAListMoreSuccess = (payload: any) =>
+  action(ActionsTypes.FETCH_QA_LIST_MORE_SUCCESS, payload);

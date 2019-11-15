@@ -23,12 +23,9 @@ const Avatar: React.FC<Props> = () => {
         setTimeout(() => {
             setLoading(false);
         }, 600);
-
-        console.log('handleLoadUserDetail')
     }
 
     const handleHideCard = () => {
-        console.log('handleHideCard');
         setCardVisible(false);
         setLoading(false);
 

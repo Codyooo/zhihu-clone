@@ -1,20 +1,24 @@
 import React, { useEffect, MouseEvent } from 'react';
 import { connect } from 'react-redux';
 import { QuestionListCardWrapper } from './style';
-import { fetchQAListRequest, fetchQuestionsListRequest } from '../../redux/actions/question';
+import { fetchQAListRequest, fetchQAListMoreRequest } from '../../redux/actions/question';
 import QuestionListItem from './QuestionListItem';
 import { get } from 'lodash';
 import { AppState } from '../../redux/store';
 import { QA } from '../../redux/actions/types/question';
 import LoadingBar from '../Common/LoaddingBar'
+import useScrollToBottom from '../../hooks/useScrollToBottom';
+
 
 interface StateProps {
     questions: QA[];
     loading: boolean;
+    moreLoading: boolean;
 }
 
 interface DispatchProps {
     fetchQAListRequest(): void;
+    fetchQAListMoreRequest(): void
 }
 
 interface OwnProps {
@@ -23,30 +27,23 @@ interface OwnProps {
 
 type Props = StateProps & DispatchProps & OwnProps;
 
-const QuestionListCard: React.FC<Props> = ({ questions, fetchQAListRequest, loading }) => {
+const QuestionListCard: React.FC<Props> = ({ questions, fetchQAListRequest, fetchQAListMoreRequest, loading, moreLoading }) => {
 
     useEffect(() => {
         fetchQAListRequest();
     }, []);
 
-    useEffect(() => {
-        const fetchMore = () => {
-            console.log('scrollHeight', document.documentElement.scrollHeight)
-            console.log('scrollTop', document.documentElement.scrollTop)
-            console.log('innerHeight', window.innerHeight)
-        }
-        console.log('haha')
-        window.addEventListener('scroll', fetchMore);
-        return () => window.removeEventListener('scroll', fetchMore)
+    useScrollToBottom(() => {
+        !moreLoading && fetchQAListMoreRequest();
     })
 
     const renderList = () =>
-        questions.map(question => {
+        questions.map((question, index) => {
             const { _id, title, description, answer, comments } = question;
             const answerPreview = get(answer, ['content'], '');
             const answererName = get(answer, ['answerer', 'name'], '');
             const voteCount = get(answer, ['voteCount'], 0);
-            return <QuestionListItem key={_id} id={_id} answerPreview={answerPreview} answererName={answererName} title={title} comments={comments} voteCount={voteCount} />
+            return <QuestionListItem key={_id + index} id={_id} answerPreview={answerPreview} answererName={answererName} title={title} comments={comments} voteCount={voteCount} />
         });
 
     // const renderTest = () => {
@@ -63,6 +60,7 @@ const QuestionListCard: React.FC<Props> = ({ questions, fetchQAListRequest, load
     return (
         <QuestionListCardWrapper>
             {loading ? <LoadingBar /> : renderList()}
+            <div style={{ marginBottom: 20 }}> {moreLoading ? <LoadingBar /> : null}</div>
         </QuestionListCardWrapper>
     )
 }
@@ -70,9 +68,10 @@ const QuestionListCard: React.FC<Props> = ({ questions, fetchQAListRequest, load
 const mapStateToProps = (state: AppState) => {
     return {
         questions: state.question.data,
-        loading: state.question.loadding
+        loading: state.question.loading,
+        moreLoading: state.question.moreLoading
     }
 }
 
 
-export default connect(mapStateToProps, { fetchQAListRequest })(QuestionListCard);
+export default connect(mapStateToProps, { fetchQAListRequest, fetchQAListMoreRequest })(QuestionListCard);
