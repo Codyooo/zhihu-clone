@@ -47,14 +47,22 @@ const QuestionListCard: React.FC<Props> = ({ questions, fetchQAListRequest, load
             const answererName = get(answer, ['answerer', 'name'], '');
             const voteCount = get(answer, ['voteCount'], 0);
             return <QuestionListItem key={_id} id={_id} answerPreview={answerPreview} answererName={answererName} title={title} comments={comments} voteCount={voteCount} />
-        })
+        });
+
+    // const renderTest = () => {
+    //     const data = {
+    //         key1: [111, 222, 333],
+    //         key2: [444, 555, 666]
+    //     }
+    //     return Object.entries(data).map(arr =>
+    //         arr[1].map(item => <div key={item}>{item}</div>)
+    //     )
+    // }
 
 
     return (
         <QuestionListCardWrapper>
             {loading ? <LoadingBar /> : renderList()}
-
-
         </QuestionListCardWrapper>
     )
 }

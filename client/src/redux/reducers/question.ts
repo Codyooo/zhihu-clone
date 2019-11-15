@@ -34,6 +34,13 @@ const questionReducer: Reducer = produce(
         draft.loadding = false;
         draft.error = action.payload;
         break;
+      case ActionTypes.FETCH_QA_LIST_MORE_REQUEST:
+        draft.loadding = true;
+        break;
+      case ActionTypes.FETCH_QA_LIST_MORE_SUCCESS:
+        draft.loadding = false;
+        draft.data = action.payload;
+        break;
       default:
         return INITIAL_STATE;
     }

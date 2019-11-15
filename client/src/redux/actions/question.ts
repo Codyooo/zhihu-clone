@@ -20,3 +20,9 @@ export const fetchQuestionsListSuccess = (payload: any) =>
 
 export const fetchQuestionsListFailure = (payload: any) =>
   action(ActionsTypes.FETCH_QUESTIONS_LIST_FAILURE, payload);
+
+export const fetchQuestionsListMoreRequest = (payload: any) =>
+  action(ActionsTypes.FETCH_QUESTIONS_LIST_REQUEST, payload);
+
+export const fetchQuestionsListMoreSuccess = (payload: any) =>
+  action(ActionsTypes.FETCH_QUESTIONS_LIST_SUCCESS, payload);
