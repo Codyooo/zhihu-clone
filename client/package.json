@@ -18,7 +18,7 @@
     "antd": "^3.24.1",
     "axios": "^0.19.0",
     "formik": "^2.0.3",
-    "highlight.js": "^9.15.10",
+    "highlight.js": "^10.4.1",
     "immer": "^4.0.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
